@@ -5,11 +5,16 @@
   "dependencies": {
     "ajv": "^6.5.2",
     "axios": "^0.18.0",
+    "follow-redirects": "^1.5.2",
+    "google-maps-react": "^2.0.2",
+    "is-buffer": "^2.0.3",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-axios": "^2.0.0",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-materialize": "^2.3.3",
+    "react-scripts": "1.1.4",
+    "styled-components": "^3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",

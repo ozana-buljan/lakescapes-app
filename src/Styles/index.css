@@ -3,3 +3,99 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+/**** **** *** MAP *** **** ****/
+
+
+#map-div{
+  width: 100%;
+  height: 100vh;
+}
+
+#wrapper{
+  display: grid;
+  grid-template-columns:  1fr 2fr;
+  font-family: "Roboto", sans-serif;
+  color: #42291c;
+}
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+
+
+
+#wrapper-aside,
+.wrapper-aside{
+  height: 100vh;
+  overflow-y: scroll;
+  background: #f7f4f3;
+  padding: 1em;
+left: -400;
+}
+.show{
+    left: 0;
+}
+@media only screen and (max-width: 992px) {
+  /*overriding MatrializeCSS class */
+    .hide-on-med-and-down {
+    display: block !important;
+  }
+}
+  @media (max-width: 992px) {
+     /* #wrapper{
+          display: grid;
+           grid-template-columns: 1fr;
+          grid-auto-rows: 2;
+      }
+
+      #wrapper>span{
+          display: block;
+        overflow-y: scroll;
+          height: 500px;
+          width: 100vh;
+grid-row: 2;
+      }*/
+a.button-collapse{
+}
+      #map-div{
+          height: 400px;
+          width: 100vw;
+      }
+      #wrapper-aside{
+          display: block;
+          width: 100vw;
+          height: 100vh;
+      }
+}
+
+
+footer{
+    height: 5vh;
+}
+
+#map-div,
+main,
+#wrapper{
+width: 100%;
+  height: 90vh;
+}
+
+li{
+    border-bottom: 1px grey;
+}
+
+#footer {
+    max-height: 10vh !important;
+}
+.page-footer{
+    background-color: #f7f7f7 !important;
+}
+div.footer-copyright{
+    height: 3vh !important;
+    font-size: 0.75em !important;
+    background-color: #7aaedd  !important;
+}
+#sidenav-overlay,
+a.button-collapse{
+ display: none;
+}
