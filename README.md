@@ -52,7 +52,8 @@ LAKESCAPES
 ->  ├── App.js # The root of the app.
     ├── App.test.js # Used for testing. Provided with Create React App.
     ├── Utils
-    │     └── BooksAPI.js # A JavaScript API for the provided Udacity backend.
+    │     ├── places.js #arrays of locations
+    │     └── mapStyles.js #custom styles for the map
     ├── Images
     │     └── (...) #images for the app
     └── index.js #This file is used for DOM rendering only.
@@ -60,43 +61,20 @@ LAKESCAPES
 
 ### App Functionality
 
-* In this application, the main page displays a list of "shelves" (i.e. categories), each of which contains a number of books:
-    - Currently Reading
-    - Want to Read
-    - Read
+*
 
-* Each book has a control that lets user to select the shelf for that book. When selection changes, the book moves onto selected shelf. The default value for the control is the current shelf the book is on.
-
-* The main page also has a link to search page, which allows user to find books and add to their library.
-
-* The search page has a text input that may be used to find books. As the value of the text input changes, the books that match that query are displayed on the page, along with a control that lets user add the book to the library.
-
-* When a book is on a bookshelf, it has the same state on both the main application page and the search page.
-
-* The search page also has a link to / (the root URL), which leads back to the main page.
-
-* When navigating back to the main page from the search page, user instantly sees all of the selections they made on the search page in the library.
-
-### Backend Server NB
-
-To simplify the development process, we've been provided with a backend server to develop against. The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend!
 
 ### The looks
-The basic look for the app was already provided. However, I've done some (minimal) redesign. Check it out!
 
-![Bookerly UI Desktop](https://raw.githubusercontent.com/ozana-buljan/Bookerly/master/public/Bookerly-UI-Desktop.png)
+#### Process
 
-![Bookerly UI Mobile](https://raw.githubusercontent.com/ozana-buljan/Bookerly/master/public/Bookerly-UI-Mobile.png)
+#### Result
+![Lakescapes UI Desktop]()
+
+![Lakescapes UI Mobile]()
 
 ## ToDo
-Simple ones that should enhance UX:
-* Add "Rate a book" functionality
-* Filter books by rating
-* Bulk move books from one shelf to another
 
-Not so simple ones (but hey, let's think big):
-* Add new books to the database
-* User's profile (similar to Goodreads)
 
 ## Contributing
 If you'd like to play with my code, contribute or suggest how to improve it - I'd welcome any feedback!
