@@ -2,7 +2,7 @@
 /* React */
 import React, { Component } from "react";
 /*React-Materialize CSS npm*/
-import {Card, Button, Icon, NavItem } from 'react-materialize';
+import { Icon, NavItem } from 'react-materialize';
 
 
 /* *** *** *** COMPONENT*** *** *** */

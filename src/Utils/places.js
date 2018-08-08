@@ -37,15 +37,6 @@ export const culturePlaces = [
         icon: "./img/culture-icon.png"
   },
     {
-        name: "Bregenz Opera House",
-        location: {
-            lat: 47.503051,
-            lng: 9.747036
-        },
-        category: "culture",
-        icon: "./img/culture-icon.png"
-  },
-    {
         name: "Seebühne Bregenz",
         location: {
             lat: 47.505129314212155,

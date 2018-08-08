@@ -10,7 +10,10 @@ import axios from "axios";
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
 
 /*Local Components*/
-import Aside from "../Aside";
+import { Aside } from "../Aside/Aside.js";
+import leIcon from "../../Images/le-icon.png";
+import foursquareIMG from "../../Images/foursquare.png";
+
 /*Utils*/
 import {
     allPlaces,
@@ -32,13 +35,12 @@ class MapContainer extends Component {
         this.state = {
             selectedArray: 'allPlaces',
             locations: allPlaces,
-            defaultMapZoom: 15,
+            defaultMapZoom: 14,
             center: {
                 lat: 47.50075,
                 lng: 9.74231
             },
-            mapType: "roadmap",
-            iconSize: 30,
+            iconSize: 50,
             mapTypeControl: false,
             markers: [],
             infoWindow: "",
@@ -73,7 +75,8 @@ class MapContainer extends Component {
       const { defaultMapZoom, center, mapType } = this.state;
 
 /*defining arguments for new map*/
-    // Getting the location to put new map in -> Looking for element with reference = 'map' prop and when found, nameing it mapNode
+    // Getting the location to put new map in -> Looking for element with reference = 'map' prop and when found, naming it mapNode
+        //WHY? src: https://www.klaasnotfound.com/2016/11/06/making-google-maps-work-with-react/
       const mapReference = this.refs.map;
       const mapNode = ReactDOM.findDOMNode(mapReference);
         //seting initial properties for the new Map
@@ -101,7 +104,6 @@ class MapContainer extends Component {
   /*
   *@description addMarkers()-> Adds markers to a map from State
   */
-
   addMarkers = () => {
     const { google } = this.props;
     const { iconSize, locations } = this.state;
@@ -109,8 +111,8 @@ class MapContainer extends Component {
 
     // Creating marker icon
       //TODO-> set different icon for each category
-    const leIcon = {
-      url: "./img/le-icon.png",
+    const defaultIcon = {
+      url: leIcon,
       size: new google.maps.Size(iconSize, iconSize),
       scaledSize: new google.maps.Size(iconSize, iconSize)
     };
@@ -123,7 +125,7 @@ class MapContainer extends Component {
         title: location.name,
         animation: google.maps.Animation.DROP,
         id: index,
-        icon: leIcon,
+        icon: defaultIcon,
         anchorPoint: new google.maps.Point(0, -30)
       });
 
@@ -140,7 +142,7 @@ class MapContainer extends Component {
   };
 
 
-/* *** *** *** MARKERS *** *** *** */
+/* *** *** *** INFO WINDOW *** *** *** */
   /**
    * @description openInfoWindow()-> Opens info window for the marker; parameter is object Marker
    */
@@ -158,7 +160,7 @@ class MapContainer extends Component {
         infoWindow.setMarker = null;
       });
     }
-
+      //get MarkerDetails
     this.getMarkerDetails(marker);
 
     // Center map to a marker position
@@ -247,22 +249,21 @@ class MapContainer extends Component {
         const imgField =
           img !== undefined ? `<img src=${img} alt=${name} />` : "";
 
-        const content = `
-          <div style="width: 100%;">
+        // Set the infoWindow content
+        infoWindow.setContent(
+        ` <div style="width: 100%;" tabIndex=0          >
             <h4>${name}</h4>
-           <ul>
+           <ul class="infoWContent">
             <li>${address}</li>
             <li>${phoneField}</li>
             <li>${urlField}</li>
             <li>Rating: ${ratingField}</li>
             </ul>
-            <div style='width: 100%; text-align: center'>${imgField}</div>
-            <img style="width: 100%" src="./img/byFoursquare.png" />
+            <div style="width: 100%; text-align: center">${imgField}</div>
+            <p style="text-align: center">Powered by <img  style="width: 60px; height: auto" src=${foursquareIMG} alt="foursquare logo"/></p>
           </div>
-        `;
-
-        // Set the infoWindow content
-        infoWindow.setContent(content);
+        `
+        );
       })
       .catch(err => {
         console.log("Error", err);
@@ -297,7 +298,7 @@ class MapContainer extends Component {
       marker.setMap(this.map);
     });
   };
-//TODO-> on change of filter update markers and list
+//TODO-> on change of filter update markers and list; and on click on the list automatically close the sideNav and openInfoWindow
   updateMarkers = markers => {
     this.setState({ markers });
   };
@@ -336,19 +337,21 @@ filterMarkers =(id)=> {
     }
 
   render() {
-    const { markers, locations } = this.state;
+    const { markers, locations, selectedArray } = this.state;
 
     return (
       <div id="wrapper">
         <Aside
         locations={locations}
           markers={markers}
+          selectedArray = {selectedArray}
           showMarkers={this.showMarkers}
           hideMarkers={this.hideMarkers}
+          filterMarkers={this.filterMarkers}
+          searchLocations={this.searchLocations}
           openInfoWindow={this.openInfoWindow}
           closeInfoWindow={this.closeInfoWindow}
-          searchLocations={this.searchLocations}
-          filterMarkers={this.filterMarkers}
+
 
         />
     <Map id="map-div" role="application" ref="map"

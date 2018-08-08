@@ -4,47 +4,135 @@ body {
   margin: 0;
   padding: 0;
   font-family:  "Roboto", sans-serif;
+max-height: 100vh;
 }
+img{
+    max-width: 100%;
+    height: auto;
+}
+#app{
 
+}
 /* --- --- Header --- --- */
-
+nav{
+    background-color:  #f7f7f7 !important;
+}
+#le-logo{
+    max-height: 56px;
+    width: auto;
+}
 /* --- --- Main: Map --- --- */
-#map-div,
+
 main,
-#wrapper{
+#wrapper,
+#wrapper>div:first-of-type,
+#map-div{
+
+   margin: 0 auto;
 width: 100%;
   height: 90vh;
 }
-
+.toggle-button>a>i{
+    color:  #7aaedd;
+}
 
 /* --- --- Aside --- --- */
 #wrapper-aside,
 .wrapper-aside{
   height: 100vh;
-  overflow-y: scroll;
   background:  #f7f7f7;
-  padding: 1em;
+    padding: 1em;
+    justify-content: center;
 }
-#sidenav-overlay,
+#sidenav-overlay{
+  background-color: rgba(255, 255, 255, 0.25);
+}
 a.button-collapse{
  display: none;
 }
-li{
-    border-bottom: 1px grey;
+
+h3{
+    font-family: 'Pacifico', cursive;
+    font-size: 2em;
+    font-weight: 100;
+    padding: 1em;
 }
-/* --- --- Footer --- --- */
-#footer {
-    max-height: 10vh !important;
+#bregenz{
+   color: #7aaedd  !important;
+    font-weight: 500;
+    text-align: center;
 }
-.page-footer{
-    background-color: #f7f7f7 !important;
+h4{
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem
 }
-div.footer-copyright{
-    height: 3vh !important;
-    font-size: 0.75em !important;
-    background-color: #7aaedd  !important;
+.card{
+    margin: auto 0;
+    padding: 0.25em;
+    width: 100%;
+}
+input[type=text]:not(.browser-default):focus:not([readonly]){
+    border-bottom: 1px solid  #577b9e  !important;
+  -webkit-box-shadow: 0 1px 0 0  #577b9e;
+          box-shadow: 0 1px 0 0  #577b9e;
+}
+.btn{
+background-color: #7aaedd  !important;
+    margin:1em;
+    left: 0;
+    width: 100%;
+}
+.btn:hover{
+background-color: #577b9e !important;
+}
+#show-button,
+#hide-button{
+    width: 100%;
+    margin: 1em auto;
+}
+#close-btn{
+    color:  #7aaedd  !important;
+}
+#close-btn:hover{
+    color:   #577b9e  !important;
 }
 
+#search-results>li{
+        border-bottom: 1px solid #9e9e9e;
+    list-style-type: none;
+}
+
+
+/* --- --- Footer --- --- */
+footer.page-footer{
+    background-color: #f7f7f7 !important;
+     max-height: 7.5vh !important;
+     bottom: 0 !important;
+     justify-content: center;
+    color:  #7aaedd;
+      width: 100vw;
+}
+footer.page-footer>div.container,
+footer.page-footer>div.container>.row>.l6{
+    height: 50px !important;
+      width: 100vw;
+    font-size: 1rem;
+    color: #323232;
+     text-align: center;
+}
+footer.page-footer>div.footer-copyright{
+    min-height: 25px !important;
+    font-size: 0.75em !important;
+    padding: 0.25em;
+    background-color: #7aaedd  !important;
+    bottom: 0 !important;
+    width: 100vw;
+    text-align: center;
+}
+#f-logo>img{
+    width: auto;
+    height: 1.5em;
+}
 /* *** *** *** RESPONSIVE *** *** *** */
 @media only screen and (max-width: 992px) {
   /*overriding MatrializeCSS class */

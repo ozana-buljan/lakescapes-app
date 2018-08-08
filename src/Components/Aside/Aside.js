@@ -1,32 +1,24 @@
 /* *** *** *** IMPORTS *** *** *** */
 /* React */
-import React, { Component } from "react";
+import React, { Component, PropTypes } from "react";
+
 /*React-Materialize CSS npm*/
 //src: https://react-materialize.github.io/
-import {Button, Icon, SideNav, SideNavItem, Row, Col, Input } from 'react-materialize';
-/*Local Components*/
-import MapContainer from "../Main/MapContainer";
-import ToggleAsideBtn from '../Header/ToggleAsideBtn';
-
-import {
-    allPlaces,
-    culturePlaces,
-    beachPlaces,
-    naturePlaces,
-    foodPlaces,
-    funPlaces,
-    shoppingPlaces
-} from "../../lib/places.js";
+import {Button, Icon, SideNav,  Row, Col, Input } from 'react-materialize';
+import atFlag from "../../Images/flag.png"
+import foursquareIMG from "../../Images/foursquare2.png";
 
 /* *** *** *** COMPONENT*** *** *** */
-class Aside extends Component {
+export class Aside extends Component {
   constructor(props){
     super(props);
       this.state = {
     locations: [],
+    selectedArray: []
   };
   }
-  /*
+
+    /*
    * @description searchLocations() -> Input search on map markers
    */
   searchLocations = e => {
@@ -61,13 +53,17 @@ class Aside extends Component {
     const { locations } = this.state;
 
     return (
-      <SideNav  trigger={<Button>SIDE NAV</Button>} id="wrapper-aside" options={{ closeOnClick: true }}>
+      <SideNav  trigger={<Button className="hide">SIDE NAV</Button>} id="wrapper-aside" options={{ closeOnClick: true }}>
 
             <a href="#" className="right" id="close-btn"><Icon>clear</Icon>
             </a>
-            <h2 tabIndex="1">Explore Bregenz</h2>
 
-             <Button
+            <h3 tabIndex="1">Plan your perfect lake escape
+                in <span id="bregenz">Bregenz </span><span><img src={atFlag} alt="Austrian flag" /></span></h3>
+                <h4 className="card">Quick Filter</h4>
+<Row>
+            <Col s={6}>
+              <Button
           id="show-button"
          tooltip="Show all locations"
           aria-label="Show all locations"
@@ -76,7 +72,8 @@ class Aside extends Component {
              >
                  <Icon>visibility</Icon>
              </Button>
-
+    </Col>
+            <Col s={6}>
             <Button
          id="hide-button"
           tooltip="Hide all locations"
@@ -86,58 +83,69 @@ class Aside extends Component {
             >
                 <Icon>visibility_off</Icon>
             </Button>
-
+    </Col>
+            </Row>
          <div id="filter">
-               <h4>Filter locations</h4>
+              <Row>
+            <Col s={4}>
              <Button
              id="filter-culture"
              tooltip="Culture"
              className="option"
-             // eventKey="culture"
+
               aria-label="Find places of culture and sights"
-              ////OVDJE sam htjela napravit plug-in  - i tak an svakom gumbu
+
                onClick={() => { this.props.filterMarkers('filter-culture')}}
             >
              <Icon large>location_city</Icon>
               </Button>
+                  </Col>
+                   <Col s={4}>
                <Button id="filter-food"
                   tooltip="Restaurants & Cafes" className="option"
-              eventKey="food" aria-label="Find restaurants and cafes"
+              aria-label="Find restaurants and cafes"
                         onClick={() => { this.props.filterMarkers('filter-food')}}
                >
                    <Icon>local_dining</Icon>
-               </Button>
+                       </Button></Col>
+                        <Col s={4}>
                <Button id="filter-fun"
                    tooltip="Fun"
                     className="option"
-              eventKey="fun" aria-label="Find bars and entertainment"
+              aria-label="Find bars and entertainment"
                         onClick={() => { this.props.filterMarkers('filter-fun')}}
                >
                     <Icon>local_activity</Icon>
                </Button>
+                  </Col>
+                    <Col s={4}>
                    <Button id="filter-shopping"
                       tooltip="Shopping"
                        className="option"
-              eventKey="shopping" aria-label="Find shops"
+              aria-label="Find shops"
                             onClick={() => { this.props.filterMarkers('filter-shopping')}}
                    >
                        <Icon>local_grocery_store</Icon>
-                   </Button>
+                        </Button></Col>
+                         <Col s={4}>
                  <Button id="filter-beach"
                      tooltip="Beach"
                       className="option"
-              eventKey="beach" aria-label="Find beaches"
+              aria-label="Find beaches"
                          onClick={() => { this.props.filterMarkers('filter-beach')}}
                  >
                       <Icon>beach_access</Icon>
-                 </Button>
+                             </Button></Col>
+                              <Col s={4}>
                <Button id="filter-nature"
                tooltip="Nature"
                 className="option"
-              eventKey="culture" aria-label="Find parks and nature"
+              aria-label="Find parks and nature"
                         onClick={() => { this.props.filterMarkers('filter-nature')}}
                >
                <Icon>local_florist</Icon></Button>
+                  </Col>
+             </Row>
             </div>
 
          <Input
@@ -148,24 +156,22 @@ class Aside extends Component {
           tabIndex="1"
         />
 
-        <ul role="list" aria-label="Venues" tabIndex="1">
+        <ul role="list" aria-label="Venues" tabIndex="1" id="search-results">
           {locations.map((marker, index) => (
             <li
               tabIndex="1"
               role="listitem"
               key={index}
               onClick={() => openInfoWindow(marker)}
-               onChange={this.searchLocations}
+            onChange={this.searchLocations}
 
             >
               {marker.title}
             </li>
           ))}
         </ul>
+<p><span id="f-logo"> Powered by <img src={foursquareIMG} classNAme="img-responsive" alt="foursquare logo"/></span></p>
         </SideNav>
     );
   }
 }
-
-/* *** *** *** Export *** *** *** */
-export default Aside;
