@@ -40,6 +40,7 @@ width: 100%;
 #wrapper-aside,
 .wrapper-aside{
   height: 100vh;
+     width: 320px;
   background:  #f7f7f7;
     padding: 1em;
     justify-content: center;
@@ -78,9 +79,9 @@ input[type=text]:not(.browser-default):focus:not([readonly]){
 }
 .btn{
 background-color: #7aaedd  !important;
-    margin:1em;
+    margin: 1em 0.5em;
     left: 0;
-    width: 100%;
+
 }
 .btn:hover{
 background-color: #577b9e !important;
@@ -139,13 +140,10 @@ footer.page-footer>div.footer-copyright{
     .hide-on-med-and-down {
     display: block !important;
   }
-     #map-div{
-          height: 400px;
-          width: 100vw;
-      }
+
       #wrapper-aside{
           display: block;
-          width: 100vw;
+          width: 320px;
           height: 100vh;
       }
 }

@@ -28,7 +28,7 @@ export class Aside extends Component {
     //first close all open infoWindows
     closeInfoWindow();
 
-    const filteredLocations = markers.filter(location => {
+    const searchedLocations = markers.filter(location => {
       // RegExp to match the value if it contains in string
       // gi = global and case insensitive
       const strToMatch = new RegExp(value, "gi");
@@ -42,7 +42,7 @@ export class Aside extends Component {
     });
 
     // Update locations state with filtered locations
-    this.setState({ locations: filteredLocations });
+    this.setState({ locations: searchedLocations });
 
       }
 
@@ -53,14 +53,14 @@ export class Aside extends Component {
     const { locations } = this.state;
 
     return (
-      <SideNav  trigger={<Button className="hide">SIDE NAV</Button>} id="wrapper-aside" options={{ closeOnClick: true }}>
+      <SideNav id="sidenav" trigger={<Button className="hide">SIDE NAV</Button>} id="wrapper-aside" options={{ closeOnClick: true }}>
 
             <a href="#" className="right" id="close-btn"><Icon>clear</Icon>
             </a>
 
             <h3 tabIndex="1">Plan your perfect lake escape
                 in <span id="bregenz">Bregenz </span><span><img src={atFlag} alt="Austrian flag" /></span></h3>
-                <h4 className="card">Quick Filter</h4>
+                <h4>Quick Filter</h4>
 <Row>
             <Col s={6}>
               <Button
@@ -68,7 +68,8 @@ export class Aside extends Component {
          tooltip="Show all locations"
           aria-label="Show all locations"
           tabIndex="1"
-        onClick={() => { this.props.filterMarkers('show-button')}}
+        onClick={() => { this.props.filterMarkers('show-button');}}
+
              >
                  <Icon>visibility</Icon>
              </Button>
@@ -147,7 +148,7 @@ export class Aside extends Component {
                   </Col>
              </Row>
             </div>
-
+<h4>Search locations</h4>
          <Input
           type="text"
           placeholder="Search"
@@ -155,7 +156,7 @@ export class Aside extends Component {
           aria-label="Search places"
           tabIndex="1"
         />
-
+<h4>Locations</h4>
         <ul role="list" aria-label="Venues" tabIndex="1" id="search-results">
           {locations.map((marker, index) => (
             <li
@@ -164,13 +165,12 @@ export class Aside extends Component {
               key={index}
               onClick={() => openInfoWindow(marker)}
             onChange={this.searchLocations}
-
             >
               {marker.title}
             </li>
           ))}
         </ul>
-<p><span id="f-logo"> Powered by <img src={foursquareIMG} classNAme="img-responsive" alt="foursquare logo"/></span></p>
+<p><span id="f-logo"> Powered by <img src={foursquareIMG} classNAme="img-responsive" alt="foursquare"/></span></p>
         </SideNav>
     );
   }

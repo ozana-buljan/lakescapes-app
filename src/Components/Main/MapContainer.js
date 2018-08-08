@@ -190,9 +190,9 @@ class MapContainer extends Component {
         }
       })
       .then(res => {
-        const venueId = res.data.response.venues[0].id;
+        const locId= res.data.response.venues[0].id;
 
-        return axios.get(`https://api.foursquare.com/v2/venues/${venueId}`, {
+        return axios.get(`https://api.foursquare.com/v2/venues/${locId}`, {
           params: {
             client_id: clientId,
             client_secret: clientSecret,
@@ -202,17 +202,17 @@ class MapContainer extends Component {
       })
       .then(res => {
         // Set variables and update the state
-        const { venue } = res.data.response;
+        const { loc } = res.data.response;
 
-        const name = venue.name;
-        const address = venue.location.formattedAddress.join(", ");
-        const url = venue.url;
-        const img = `${venue.bestPhoto.prefix}150x150${venue.bestPhoto.suffix}`;
+        const name = loc.name;
+         const img = `${loc.bestPhoto.prefix}150x150${loc.bestPhoto.suffix}`;
+        const address = loc.location.formattedAddress.join(", ");
+        const url = loc.url;
         const phone = {
-          formattedPhone: venue.contact.formattedPhone,
-          phone: venue.contact.phone
+          formattedPhone:loc.contact.formattedPhone,
+          phone: loc.contact.phone
         };
-        const rating = venue.rating;
+        const rating = loc.rating;
 
         this.setState({
           markerDetails: {
@@ -226,7 +226,7 @@ class MapContainer extends Component {
         });
       })
       .then(res => {
-        // Retrieve details from state and create content for infoWindow
+        //getting details from state and create content for infoWindow
         const {
           name,
           address,
@@ -236,30 +236,30 @@ class MapContainer extends Component {
           rating
         } = this.state.markerDetails;
 
-        const phoneField =
+        const phoneInfo =
           phone.phone !== undefined
             ? `<a href="tel:${phone.phone}">${phone.formattedPhone}</a>`
             : "";
-        const urlField =
+        const urlInfo =
           url !== undefined ? `<a href=${url} target="_blank">${url}</a>` : "";
-        const ratingField =
+        const ratingInfo =
           rating !== undefined
             ? `<span><b>${rating}</b></span>`
             : "not available";
-        const imgField =
+        const imgInfo=
           img !== undefined ? `<img src=${img} alt=${name} />` : "";
 
-        // Set the infoWindow content
+        // Populating the infoWindow content
         infoWindow.setContent(
         ` <div style="width: 100%;" tabIndex=0          >
             <h4>${name}</h4>
+    <div style="width: 100%; text-align: center">${imgInfo}</div>
            <ul class="infoWContent">
             <li>${address}</li>
-            <li>${phoneField}</li>
-            <li>${urlField}</li>
-            <li>Rating: ${ratingField}</li>
+            <li>${phoneInfo}</li>
+            <li>${urlInfo}</li>
+            <li>Rating: ${ratingInfo}</li>
             </ul>
-            <div style="width: 100%; text-align: center">${imgField}</div>
             <p style="text-align: center">Powered by <img  style="width: 60px; height: auto" src=${foursquareIMG} alt="foursquare logo"/></p>
           </div>
         `
@@ -270,15 +270,15 @@ class MapContainer extends Component {
       });
   };
 
-  /**
-   * @description -> Closes the Info Window
+  /*
+   * @description closeInfoWindow()-> Close the Info Window
    */
   closeInfoWindow = () => {
     this.state.infoWindow.close();
   };
 
-  /**
-   * Hides all markers from map
+    /*
+   * @description hideMarkers()-> hide all markers
    */
   hideMarkers = () => {
     const { markers } = this.state;
@@ -288,8 +288,8 @@ class MapContainer extends Component {
     });
   };
 
-  /**
-   * Show all markers to map
+   /*
+   * @description showMarkers()-> show all markers
    */
   showMarkers = () => {
     const { markers } = this.state;
@@ -299,9 +299,17 @@ class MapContainer extends Component {
     });
   };
 //TODO-> on change of filter update markers and list; and on click on the list automatically close the sideNav and openInfoWindow
-  updateMarkers = markers => {
+ /*
+   * @description updateMarkers()-> updates markers
+   */
+
+updateMarkers = markers => {
     this.setState({ markers });
   };
+
+ /*
+   * @description filterMarker()-> on click on one of tfilter buttons; filters them acordingly
+   */
 
 filterMarkers =(id)=> {
     if(id === 'show-button'){
