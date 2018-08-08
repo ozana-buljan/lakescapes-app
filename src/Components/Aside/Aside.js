@@ -8,6 +8,18 @@ import {Button, Icon, SideNav,  Row, Col, Input } from 'react-materialize';
 import atFlag from "../../Images/flag.png"
 import foursquareIMG from "../../Images/foursquare2.png";
 
+/*Utils*/
+import {
+    allPlaces,
+    culturePlaces,
+    beachPlaces,
+    naturePlaces,
+    foodPlaces,
+    funPlaces,
+    shoppingPlaces
+} from "../../Utils/places.js";
+
+
 /* *** *** *** COMPONENT*** *** *** */
 export class Aside extends Component {
   constructor(props){
@@ -45,7 +57,11 @@ export class Aside extends Component {
     this.setState({ locations: searchedLocations });
 
       }
-
+ componentDidUpdate(prevProps) {
+    if (!prevProps.markers.length) {
+      this.searchLocations({ target: { value: '' }});
+    }
+  }
 //TODO-> update the list on click of the button too (now only input search updates it)
 
   render() {
@@ -53,7 +69,7 @@ export class Aside extends Component {
     const { locations } = this.state;
 
     return (
-      <SideNav id="sidenav" trigger={<Button className="hide">SIDE NAV</Button>} id="wrapper-aside" options={{ closeOnClick: true }}>
+      <SideNav id="sidenav" trigger={<Button className="hide"></Button>} id="wrapper-aside" options={{ closeOnClick: true }}>
 
             <a href="#" className="right" id="close-btn"><Icon>clear</Icon>
             </a>
@@ -96,7 +112,7 @@ export class Aside extends Component {
 
               aria-label="Find places of culture and sights"
 
-               onClick={() => { this.props.filterMarkers('filter-culture')}}
+               onClick={() => { this.props.filterMarkers('filter-culture');}}
             >
              <Icon large>location_city</Icon>
               </Button>
@@ -148,7 +164,7 @@ export class Aside extends Component {
                   </Col>
              </Row>
             </div>
-<h4>Search locations</h4>
+        <h4>Search locations</h4>
          <Input
           type="text"
           placeholder="Search"
@@ -156,7 +172,7 @@ export class Aside extends Component {
           aria-label="Search places"
           tabIndex="1"
         />
-<h4>Locations</h4>
+        <h4>Locations</h4>
         <ul role="list" aria-label="Venues" tabIndex="1" id="search-results">
           {locations.map((marker, index) => (
             <li
@@ -170,7 +186,7 @@ export class Aside extends Component {
             </li>
           ))}
         </ul>
-<p><span id="f-logo"> Powered by <img src={foursquareIMG} classNAme="img-responsive" alt="foursquare"/></span></p>
+        <p><span id="f-logo"> Powered by <img src={foursquareIMG} classNAme="img-responsive" alt="foursquare"/></span></p>
         </SideNav>
     );
   }

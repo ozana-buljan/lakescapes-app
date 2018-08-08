@@ -267,6 +267,12 @@ class MapContainer extends Component {
       })
       .catch(err => {
         console.log("Error", err);
+        alert (`
+Apologies!
+Something went wrong with loading the info.
+Try to refresh the page.
+If that doesn't help - oh well -we've very probably exceeded the number of daily requests.
+`)
       });
   };
 
@@ -352,7 +358,7 @@ filterMarkers =(id)=> {
         <Aside
         locations={locations}
           markers={markers}
-          selectedArray = {selectedArray}
+          selectedArray = {this.selectedArray}
           showMarkers={this.showMarkers}
           hideMarkers={this.hideMarkers}
           filterMarkers={this.filterMarkers}
