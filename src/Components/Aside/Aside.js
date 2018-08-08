@@ -8,42 +8,23 @@ import {Button, Icon, SideNav,  Row, Col, Input } from 'react-materialize';
 import atFlag from "../../Images/flag.png"
 import foursquareIMG from "../../Images/foursquare2.png";
 
-/*Utils*/
-import {
-    allPlaces,
-    culturePlaces,
-    beachPlaces,
-    naturePlaces,
-    foodPlaces,
-    funPlaces,
-    shoppingPlaces
-} from "../../Utils/places.js";
-
-
 /* *** *** *** COMPONENT*** *** *** */
 export class Aside extends Component {
   constructor(props){
     super(props);
       this.state = {
-    locations: [],
-    selectedArray: []
+        search: '',
+        isHidden: false,
   };
   }
-
     /*
-   * @description searchLocations() -> Input search on map markers
+   * @description  filerLocationBySearch() -> Input search on map markers
    */
-  searchLocations = e => {
-    const { value } = e.target;
-    const { markers, closeInfoWindow } = this.props;
-
-    //first close all open infoWindows
-    closeInfoWindow();
-
-    const searchedLocations = markers.filter(location => {
+  filerLocationBySearch = (locations, searchBy) =>
+    locations.filter(location => {
       // RegExp to match the value if it contains in string
       // gi = global and case insensitive
-      const strToMatch = new RegExp(value, "gi");
+      const strToMatch = new RegExp(searchBy, "gi");
       if (location.title.match(strToMatch)) {
         location.setVisible(true);
       } else {
@@ -53,23 +34,44 @@ export class Aside extends Component {
       return location.title.match(strToMatch);
     });
 
-    // Update locations state with filtered locations
-    this.setState({ locations: searchedLocations });
+     /*
+   * @description searchLocations() -> updates locations list
+   */
+  searchLocations = e => {
+    const { value } = e.target;
+    const { closeInfoWindow } = this.props;
+    //first close all open infoWindows
+    closeInfoWindow();
 
-      }
- componentDidUpdate(prevProps) {
-    if (!prevProps.markers.length) {
-      this.searchLocations({ target: { value: '' }});
-    }
-  }
+    // Update locations state with filtered locations
+    this.setState({ search: value });
+  };
+
+ /*
+   @description hideMarkersHandler() -> hides markers on click on hide button
+   */
+  hideMarkersHandler = () => {
+    this.setState({ isHidden: true });
+    this.props.hideMarkers();
+  };
+ /*
+   @description showMarkersHandler() -> shows markers on click on hide button
+   */
+  showMarkersHandler = () => {
+    this.setState({ isHidden: false });
+    this.props.filterMarkers('show-button');
+  };
+
 //TODO-> update the list on click of the button too (now only input search updates it)
 
   render() {
-    const { openInfoWindow } = this.props;
-    const { locations } = this.state;
+    const { openInfoWindow, markers } = this.props;
+    const { search, isHidden } = this.state;
+
+    const locations = !isHidden ? this.filerLocationBySearch(markers, search) : [];
 
     return (
-      <SideNav id="sidenav" trigger={<Button className="hide"></Button>} id="wrapper-aside" options={{ closeOnClick: true }}>
+      <SideNav id="sidenav" trigger={<Button className="hide">SIDE NAV</Button>} id="wrapper-aside" options={{ closeOnClick: true }}>
 
             <a href="#" className="right" id="close-btn"><Icon>clear</Icon>
             </a>
@@ -84,7 +86,7 @@ export class Aside extends Component {
          tooltip="Show all locations"
           aria-label="Show all locations"
           tabIndex="1"
-        onClick={() => { this.props.filterMarkers('show-button');}}
+        onClick={this.showMarkersHandler}
 
              >
                  <Icon>visibility</Icon>
@@ -96,7 +98,7 @@ export class Aside extends Component {
           tooltip="Hide all locations"
           aria-label="Hide all locations"
           tabIndex="1"
-         onClick={this.props.hideMarkers}
+         onClick={this.hideMarkersHandler}
             >
                 <Icon>visibility_off</Icon>
             </Button>
@@ -112,7 +114,7 @@ export class Aside extends Component {
 
               aria-label="Find places of culture and sights"
 
-               onClick={() => { this.props.filterMarkers('filter-culture');}}
+               onClick={() => { this.props.filterMarkers('filter-culture')}}
             >
              <Icon large>location_city</Icon>
               </Button>
@@ -164,15 +166,16 @@ export class Aside extends Component {
                   </Col>
              </Row>
             </div>
-        <h4>Search locations</h4>
+<h4>Search locations</h4>
          <Input
           type="text"
           placeholder="Search"
+          value={search}
           onChange={this.searchLocations}
           aria-label="Search places"
           tabIndex="1"
         />
-        <h4>Locations</h4>
+<h4>Locations</h4>
         <ul role="list" aria-label="Venues" tabIndex="1" id="search-results">
           {locations.map((marker, index) => (
             <li
@@ -186,7 +189,7 @@ export class Aside extends Component {
             </li>
           ))}
         </ul>
-        <p><span id="f-logo"> Powered by <img src={foursquareIMG} classNAme="img-responsive" alt="foursquare"/></span></p>
+<p><span id="f-logo"> Powered by <img src={foursquareIMG} classNAme="img-responsive" alt="foursquare"/></span></p>
         </SideNav>
     );
   }

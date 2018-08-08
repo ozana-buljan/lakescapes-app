@@ -133,6 +133,10 @@ class MapContainer extends Component {
       markers.push(marker);
      //Event listener-> on click; open InfoWindow
       marker.addListener("click", () => {
+          marker.setAnimation(window.google.maps.Animation.BOUNCE);
+        setTimeout(function () {
+          marker.setAnimation(null);
+        }, 600);
         this.openInfoWindow(marker);
       });
     });
