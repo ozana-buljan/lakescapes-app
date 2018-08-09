@@ -11,9 +11,9 @@ import LeLogo from "../../Images/le-logo.png";
 class Header extends Component{
 render() {
       return (
-          <Navbar left fixed>
-              <ToggleAsideBtn  className="hide-on-med-and-down"/>
-              <a ><img id="le-logo" src={LeLogo} alt="Lakescapes app logo" className="logo img-responsive"/></a>
+          <Navbar left fixed  role="navigation" aria-label="main menu" >
+              <ToggleAsideBtn  autofocus  aria-label="open side navigation" className="hide-on-med-and-down"/>
+              <img  id="le-logo" src={LeLogo} alt="Lakescapes app logo" className="logo responsive-img"/>
               </Navbar>
     );
   }

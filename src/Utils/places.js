@@ -10,24 +10,6 @@ export const culturePlaces = [
         icon: "./img/culture-icon.png"
   },
     {
-        name: "Bregenz City Hall",
-        location: {
-            lat: 47.503159,
-            lng: 9.746934
-        },
-        category: "culture",
-        icon: "./img/culture-icon.png"
-  },
-    {
-        name: "Galerie Lisi Hämmerle",
-        location: {
-            lat: 47.503082,
-            lng: 9.747679
-        },
-        category: "culture",
-        icon: "./img/culture-icon.png"
-  },
-    {
         name: "Kornmarktplatz",
         location: {
             lat: 47.50360586605752,
@@ -113,15 +95,6 @@ export const foodPlaces = [
         location: {
             lat: 47.503229,
             lng: 9.747482
-        },
-        category: "food",
-        icon: "./img/food-icon.png"
-  },
-    {
-        name: "Bäckerei Kloser Stadt",
-        location: {
-            lat: 47.50267962052994,
-            lng: 9.74659785331704
         },
         category: "food",
         icon: "./img/food-icon.png"
@@ -218,15 +191,6 @@ export const foodPlaces = [
         icon: "./img/food-icon.png"
   },
     {
-        name:  "Viva Cantina Mexicana Bar",
-        location: {
-          lat: 7.50585174119977,
-            lng: 9.748569647939272
-        },
-        category: "food",
-        icon: "./img/food-icon.png"
-  },
-    {
         name:  "Melanie",
         location: {
           lat: 47.512938519383965,
@@ -240,15 +204,7 @@ export const foodPlaces = [
 ];
 
 export const funPlaces = [
-    {
-        name: "BeachBar",
-        location: {
-            lat: 47.49014373411244,
-            lng: 9.746971573087597
-        },
-        category: "fun",
-        icon: "./img/fun-icon.png"
-    },
+
     {
         name: "Cuba",
         location: {
@@ -272,15 +228,6 @@ export const funPlaces = [
 ];
 
 export const shoppingPlaces = [
-    {
-        name: "Buchhandlung Brunner",
-        location: {
-            lat: 47.502853004131296,
-            lng: 9.74728123998512
-        },
-        category:"shopping",
-        icon: "./img/shopping-icon.png"
-  },
  {
         name: "4D OUTFITTERS Concept store",
         location: {

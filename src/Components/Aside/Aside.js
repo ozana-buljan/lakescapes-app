@@ -1,6 +1,6 @@
 /* *** *** *** IMPORTS *** *** *** */
 /* React */
-import React, { Component, PropTypes } from "react";
+import React, { Component } from "react";
 
 /*React-Materialize CSS npm*/
 //src: https://react-materialize.github.io/
@@ -71,41 +71,15 @@ export class Aside extends Component {
     const locations = !isHidden ? this.filerLocationBySearch(markers, search) : [];
 
     return (
-      <SideNav id="sidenav" trigger={<Button className="hide">SIDE NAV</Button>} id="wrapper-aside" options={{ closeOnClick: true }}>
+      <SideNav trigger={<Button className="hide" tabIndex="-5">SIDE NAV</Button>} id="wrapper-aside" options={{ closeOnClick: true }} role="complementary">
 
-            <a href="#" className="right" id="close-btn"><Icon>clear</Icon>
+            <a href="#" className="right" id="close-btn" aria-label="close sidebar"><Icon>clear</Icon>
             </a>
 
-            <h3 tabIndex="1">Plan your perfect lake escape
+            <h3 >Plan your perfect lake escape
                 in <span id="bregenz">Bregenz </span><span><img src={atFlag} alt="Austrian flag" /></span></h3>
-                <h4>Quick Filter</h4>
-<Row>
-            <Col s={6}>
-              <Button
-          id="show-button"
-         tooltip="Show all locations"
-          aria-label="Show all locations"
-          tabIndex="1"
-        onClick={this.showMarkersHandler}
-
-             >
-                 <Icon>visibility</Icon>
-             </Button>
-    </Col>
-            <Col s={6}>
-            <Button
-         id="hide-button"
-          tooltip="Hide all locations"
-          aria-label="Hide all locations"
-          tabIndex="1"
-         onClick={this.hideMarkersHandler}
-            >
-                <Icon>visibility_off</Icon>
-            </Button>
-    </Col>
-            </Row>
-         <div id="filter">
-              <Row>
+                <h4 >Quick Filter</h4>
+              <Row id="btns-filter">
             <Col s={4}>
              <Button
              id="filter-culture"
@@ -121,8 +95,10 @@ export class Aside extends Component {
                   </Col>
                    <Col s={4}>
                <Button id="filter-food"
-                  tooltip="Restaurants & Cafes" className="option"
-              aria-label="Find restaurants and cafes"
+                  tooltip="Restaurants & Cafes"
+                  className="option"
+                       aria-label="Find restaurants and cafes"
+
                         onClick={() => { this.props.filterMarkers('filter-food')}}
                >
                    <Icon>local_dining</Icon>
@@ -132,6 +108,7 @@ export class Aside extends Component {
                    tooltip="Fun"
                     className="option"
               aria-label="Find bars and entertainment"
+
                         onClick={() => { this.props.filterMarkers('filter-fun')}}
                >
                     <Icon>local_activity</Icon>
@@ -142,6 +119,7 @@ export class Aside extends Component {
                       tooltip="Shopping"
                        className="option"
               aria-label="Find shops"
+
                             onClick={() => { this.props.filterMarkers('filter-shopping')}}
                    >
                        <Icon>local_grocery_store</Icon>
@@ -151,6 +129,7 @@ export class Aside extends Component {
                      tooltip="Beach"
                       className="option"
               aria-label="Find beaches"
+
                          onClick={() => { this.props.filterMarkers('filter-beach')}}
                  >
                       <Icon>beach_access</Icon>
@@ -160,12 +139,40 @@ export class Aside extends Component {
                tooltip="Nature"
                 className="option"
               aria-label="Find parks and nature"
+
                         onClick={() => { this.props.filterMarkers('filter-nature')}}
                >
                <Icon>local_florist</Icon></Button>
                   </Col>
              </Row>
-            </div>
+
+
+            <Row id="btns-vis">
+           <Col s={6}>
+            <Button
+         id="hide-button"
+          tooltip="Hide all locations"
+          aria-label="Hide all locations"
+
+         onClick={this.hideMarkersHandler}
+            >
+                <Icon>visibility_off</Icon>
+            </Button>
+    </Col>
+              <Col s={6}>
+              <Button
+          id="show-button"
+         tooltip="Show all locations"
+          aria-label="Show all locations"
+
+        onClick={this.showMarkersHandler}
+
+             >
+                 <Icon>visibility</Icon>
+             </Button>
+    </Col>
+
+            </Row>
 <h4>Search locations</h4>
          <Input
           type="text"
@@ -173,23 +180,23 @@ export class Aside extends Component {
           value={search}
           onChange={this.searchLocations}
           aria-label="Search places"
-          tabIndex="1"
+          role="search"
+
         />
-<h4>Locations</h4>
-        <ul role="list" aria-label="Venues" tabIndex="1" id="search-results">
-          {locations.map((marker, index) => (
-            <li
-              tabIndex="1"
-              role="listitem"
+<h4  >Locations</h4>
+        <div role="list" aria-label="List of filtered locations" id="search-results">
+         {locations.map((marker, index) => (
+            <button className="btn-flat"
+              role="button"
               key={index}
               onClick={() => openInfoWindow(marker)}
             onChange={this.searchLocations}
             >
               {marker.title}
-            </li>
+                </button>
           ))}
-        </ul>
-<p><span id="f-logo"> Powered by <img src={foursquareIMG} classNAme="img-responsive" alt="foursquare"/></span></p>
+        </div>
+<p className="foursquare-logo"> Powered by <img src={foursquareIMG} className="img-responsive" alt="foursquare"/></p>
         </SideNav>
     );
   }

@@ -18,9 +18,11 @@ nav{
     background-color:  #f7f7f7 !important;
 }
 #le-logo{
-    max-height: 56px;
+    max-height: 54px;
     width: auto;
+    margin: 5px auto;
 }
+
 /* --- --- Main: Map --- --- */
 
 main,
@@ -33,7 +35,7 @@ width: 100%;
   height: 90vh;
 }
 .toggle-button>a>i{
-    color:  #7aaedd;
+    color: #323232;
 }
 
 /* --- --- Aside --- --- */
@@ -56,7 +58,8 @@ h3{
     font-family: 'Pacifico', cursive;
     font-size: 2em;
     font-weight: 100;
-    padding: 1em;
+    padding: 1em 0;
+
 }
 #bregenz{
    color: #7aaedd  !important;
@@ -73,7 +76,7 @@ h4{
     width: 100%;
 }
 input[type=text]:not(.browser-default):focus:not([readonly]){
-    border-bottom: 1px solid  #577b9e  !important;
+    border-bottom: 2px solid  #577b9e  !important;
   -webkit-box-shadow: 0 1px 0 0  #577b9e;
           box-shadow: 0 1px 0 0  #577b9e;
 }
@@ -92,47 +95,57 @@ background-color: #577b9e !important;
     margin: 1em auto;
 }
 #close-btn{
-    color:  #7aaedd  !important;
-}
-#close-btn:hover{
-    color:   #577b9e  !important;
+    color:  #323232 !important;
+    padding: 0.5em;
 }
 
 #search-results>li{
-        border-bottom: 1px solid #9e9e9e;
+        border-top: 1px solid #9e9e9e;
     list-style-type: none;
 }
 
+.btn-flat {
+     border-top: 1px solid #9e9e9e;
+  display: block;
+    width: 100%;
+  height: 60px;
+  padding: 0.5 em;
+  text-transform: capitalize;
+    text-align: left;
+  vertical-align: left;
 
+}
 /* --- --- Footer --- --- */
 footer.page-footer{
     background-color: #f7f7f7 !important;
-     max-height: 7.5vh !important;
      bottom: 0 !important;
      justify-content: center;
     color:  #7aaedd;
       width: 100vw;
+
 }
-footer.page-footer>div.container,
-footer.page-footer>div.container>.row>.l6{
-    height: 50px !important;
-      width: 100vw;
-    font-size: 1rem;
-    color: #323232;
-     text-align: center;
+footer.page-footer>div.container{
+    height: auto;
 }
+
 footer.page-footer>div.footer-copyright{
-    min-height: 25px !important;
+ height: 75px;
     font-size: 0.75em !important;
-    padding: 0.25em;
-    background-color: #7aaedd  !important;
+    padding: 0;
+   background-color:  #f7f7f7 !important;
+    color: #577b9e !important;
     bottom: 0 !important;
     width: 100vw;
     text-align: center;
 }
-#f-logo>img{
+.foursquare-logo>img{
     width: auto;
     height: 1.5em;
+}
+.foursquare-logo{
+      border-top: 2px solid #9e9e9e;
+    padding: 0.5em 0;
+    font-weight: 500;
 }
 /* *** *** *** RESPONSIVE *** *** *** */
 @media only screen and (max-width: 992px) {
@@ -140,10 +153,9 @@ footer.page-footer>div.footer-copyright{
     .hide-on-med-and-down {
     display: block !important;
   }
-
       #wrapper-aside{
           display: block;
           width: 320px;
-          height: 100vh;
+          height: 100%;
       }
 }

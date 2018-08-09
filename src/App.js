@@ -1,7 +1,7 @@
 /* *** *** *** IMPORTS *** *** *** */
 
 /* React */
-import React, { Component } from "react";
+import React from "react";
 
 /*Local Components*/
 import Header from "./Components/Header/Header.js";
@@ -15,9 +15,9 @@ import './Styles/App.css';
 const App = ()=> {
 
     return(
-        <div id="app">
-        <Header />
-        <Main />
+        <div id="app" aria-label="Lake escape application for discoevring points of interest in Bregenz, Austria">
+        <Header role="navigation" />
+        <Main role="main"/>
          <LeFooter />
 
         </div>

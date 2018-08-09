@@ -19,6 +19,7 @@
 
 
 ## App Details
+
 ### File structure
 
 
@@ -85,12 +86,13 @@ I'd love to collaborate so any of the todos I'd gladly include. There are only t
 
 Thank you in advance if you decide to tackle with this one!
 
+
+## Dependancies
 ## References
-*   Original repo: [Starter Code for the React MyReads Project by Udacity](https://github.com/udacity/reactnd-project-myreads-starter)
+*
 
 ## Author
 * [**Ozana Buljan**](https://github.com/ozana-buljan)
-* *Initial work* - [Udacity](https://github.com/udacity/reactnd-project-myreads-starter)
 
 
 ## License

@@ -204,19 +204,19 @@ class MapContainer extends Component {
           }
         });
       })
-      .then(res => {
+     .then(res => {
         // Set variables and update the state
-        const { loc } = res.data.response;
+        const { venue } = res.data.response;
 
-        const name = loc.name;
-         const img = `${loc.bestPhoto.prefix}150x150${loc.bestPhoto.suffix}`;
-        const address = loc.location.formattedAddress.join(", ");
-        const url = loc.url;
+        const name = venue.name;
+        const address = venue.location.formattedAddress.join(", ");
+        const url = venue.url;
+        const img = `${venue.bestPhoto.prefix}150x150${venue.bestPhoto.suffix}`;
         const phone = {
-          formattedPhone:loc.contact.formattedPhone,
-          phone: loc.contact.phone
+          formattedPhone: venue.contact.formattedPhone,
+          phone: venue.contact.phone
         };
-        const rating = loc.rating;
+        const rating = venue.rating;
 
         this.setState({
           markerDetails: {
@@ -231,7 +231,7 @@ class MapContainer extends Component {
       })
       .then(res => {
         //getting details from state and create content for infoWindow
-        const {
+        let {
           name,
           address,
           url,
@@ -240,31 +240,33 @@ class MapContainer extends Component {
           rating
         } = this.state.markerDetails;
 
-        const phoneInfo =
+        let phoneInfo =
           phone.phone !== undefined
             ? `<a href="tel:${phone.phone}">${phone.formattedPhone}</a>`
             : "";
-        const urlInfo =
+        let urlInfo =
           url !== undefined ? `<a href=${url} target="_blank">${url}</a>` : "";
-        const ratingInfo =
+        let ratingInfo =
           rating !== undefined
             ? `<span><b>${rating}</b></span>`
             : "not available";
-        const imgInfo=
+        let imgInfo=
           img !== undefined ? `<img src=${img} alt=${name} />` : "";
 
         // Populating the infoWindow content
         infoWindow.setContent(
-        ` <div style="width: 100%;" tabIndex=0          >
+        ` <div style="width: 100%;" tabIndex=0 role="contentinfo">
             <h4>${name}</h4>
+<hr>
     <div style="width: 100%; text-align: center">${imgInfo}</div>
+<hr>
            <ul class="infoWContent">
-            <li>${address}</li>
+            <li style="font-weight: 500">${address}</li>
             <li>${phoneInfo}</li>
             <li>${urlInfo}</li>
             <li>Rating: ${ratingInfo}</li>
             </ul>
-            <p style="text-align: center">Powered by <img  style="width: 60px; height: auto" src=${foursquareIMG} alt="foursquare logo"/></p>
+            <p style="text-align: center">Powered by <img  style="width: auto; height: 2em" src=${foursquareIMG} alt="foursquare logo"/></p>
           </div>
         `
         );
@@ -369,7 +371,6 @@ filterMarkers =(id)=> {
           searchLocations={this.searchLocations}
           openInfoWindow={this.openInfoWindow}
           closeInfoWindow={this.closeInfoWindow}
-
 
         />
     <Map id="map-div" role="application" ref="map"
