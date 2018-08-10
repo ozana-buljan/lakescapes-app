@@ -25,19 +25,18 @@
 * Check out the app!
 
 ### Web live: Coming soon
-
+Check out the live [demo](https://ozana-buljan.github.io/lakescapes-app/)!
 
 
 ## App features
 * Google Map displays chosen venues in Bregenz, Austria (selection is my favorites)
-* When user clicks ona a marker, it gets animated (bounces) and an info window opens which provides further details about the venue (fetched from Foursquare's API).
-* **Note**: *Since there is a daily limit of API requests this app can make to Foursquare, it may so occur that it's unable to retreive the details if the limit is exceeded (Error 429). That's the downside of being on a free plan* ¯\_(ツ)_/¯
+* When user clicks ona a marker, it gets animated (bounces) and an info window opens which provides further details about the venue (fetched from Foursquare's API).**Note**: *Since there is a daily limit of API requests this app can make to Foursquare, it may so occur that it's unable to retreive the details if the limit is exceeded (Error 429). That's the downside of being on a free plan* ¯\_(ツ)_/¯
 * User can toggle a sidebar (the toggle button is upper left on header) which allow them to filter markers and venues on the list by category or by name.
 * At sidebar  - there is an intro note, filter options and a Search Results List.
     - QUICK FILTER -> consists of buttons which filter venues by category (culture, food, fun, shopping, beaches, nature)
     - SEARCH BAR -> allows user to filter by name - matches text in the inout field against venues name. Uses RegExp with "gi" parameter - which means it's going to match a location even if a fraction of the query word corresponds the name. It's also case insensitive.
     - SEARCH RESULTS LIST -> it is updated by both quick filter and search bar and lists only matching venues. A little tweak that I've implemented, which enhances mobile UX is that on click on any of the list items, it closes the sidebar, makes that marker active and opens an info window.
-*At footer-> credits and copyright (as seen from elsewhere :)
+* At footer-> credits and copyright (as seen from elsewhere :)
 
 ### The looks
 #### Result
@@ -143,7 +142,7 @@ Check it out: in Dev Tools,  disconnect the internet or set the throttling to a 
 ##### Making Demo Live
 Now, GitHub pages are pretty staright forward normally. However, with React app it's a bit more compicated. I used [`gh-pages`](https://github.com/gitname/react-gh-pages) and luckily, I've found [this](https://codeburst.io/deploy-react-to-github-pages-to-create-an-amazing-website-42d8b09cd4d) tutorial which helped me to make it happen.
 
-Check out the live [demo]()!
+Check out the live [demo](https://ozana-buljan.github.io/lakescapes-app/)!
 
 
 ### Dependencies

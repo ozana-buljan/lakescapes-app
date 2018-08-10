@@ -32,8 +32,7 @@ export class Aside extends Component {
    */
   filerLocationBySearch = (locations, searchBy) =>
     locations.filter(location => {
-      // RegExp to match the value if it contains in string
-      // gi = global and case insensitive
+      // RegExp to match the value if it contains in string (gi = global and case insensitive)
       const strToMatch = new RegExp(searchBy, "gi");
       if (location.title.match(strToMatch)) {
         location.setVisible(true);
@@ -191,7 +190,7 @@ export class Aside extends Component {
 
         />
 <h4  >Locations</h4>
-        <div role="list" aria-label="List of filtered locations" id="search-results">
+        <div aria-label="List of filtered locations" id="search-results">
          {locations.map((marker, index) => (
             <a className="btn-flat sidenav-trigger"
               role="button"

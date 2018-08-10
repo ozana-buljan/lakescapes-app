@@ -2,10 +2,12 @@
   "name": "lakescapes-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://ozana-buljan.github.io/lakescapes-app",
   "dependencies": {
     "ajv": "^6.5.2",
     "axios": "^0.18.0",
     "follow-redirects": "^1.5.2",
+    "gh-pages": "^1.2.0",
     "google-maps-react": "^2.0.2",
     "is-buffer": "^2.0.3",
     "prop-types": "^15.6.2",
@@ -14,13 +16,13 @@
     "react-dom": "^16.4.1",
     "react-materialize": "^2.3.3",
     "react-scripts": "1.1.4"
-
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
-
