@@ -32,13 +32,6 @@ Check out the live [demo](https://ozana-buljan.github.io/lakescapes-app/)!
     - SEARCH RESULTS LIST -> it is updated by both quick filter and search bar and lists only matching venues. A little tweak that I've implemented, which enhances mobile UX is that on click on any of the list items, it closes the sidebar, makes that marker active and opens an info window.
 * At footer-> credits and copyright (as seen from elsewhere :)
 
-### The looks
-#### Result
-![Lakescapes UI Desktop]()
-
-![Lakescapes UI Mobile]()
-
-
 
 ## App Details
 
@@ -95,15 +88,15 @@ The first thing I've learned on my path as  a web dev is to split a complex prob
 
 My first instinct when starting to tackle with a new project is to go straight to the drawing board. List all the requirements for the project and sketch how their functionality is inteveined.
 
-![Lakescapes WFs](https://github.com/ozana-buljan/lakescapes-app/blob/master/public/WFs.png)
+![Lakescapes WFs](https://raw.githubusercontent.com/ozana-buljan/lakescapes-app/master/public/WFs.png)
 
 Then, I try to add some decent(ish) looks to it.
 
-![Lakescapes Mockups](https://github.com/ozana-buljan/lakescapes-app/blob/master/public/Mockups.png)
+![Lakescapes Mockups](https://raw.githubusercontent.com/ozana-buljan/lakescapes-app/master/public/Mockups.png)
 
 Since this was a React task, I needed to split that UI into small pieces - legos for my app - and sketch how they interact with each other. I must say oI had to tweak it a few times from the beginning of process to the final app. This is where my lack of experience with some technologies required for this project had really shined through. Let me explain what I mean by that with a quick sketch comparing my initial idea for the app architecture - as opposed to its final version:
 
-![Lakescapes AppArch]()
+![Lakescapes AppArch](https://raw.githubusercontent.com/ozana-buljan/lakescapes-app/master/public/AppArch.png)
 
 #### Step by step implementation
 ##### Preparation
