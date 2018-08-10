@@ -1,7 +1,9 @@
 # Udacity FEND Project #8:  **LakEscapes** - Neighbourhood Map App
 
- This is eighth and final project for Udacity's FEND. Project's purpose is to build a single page web application (from scratch!) using ReactJS and to add features provided by external APIs (like Maps Javascript API and FourSquare Places APi), focusing on components, props and state.
+ This is eighth and final project for Udacity's FEND.
+ A single page app which lists the all the must-visit places in Bregenz, Austria! Coincidentally, they're also my personal favorites. So if you find yourself in Bregenz, use this map to make sure not miss out on anything this amazing vacation spot has to offer.
 
+ As per technicalities, the task was to build a single page web application (from scratch!) using ReactJS and to add features provided by external APIs (like Maps Javascript API and FourSquare Places APi), focusing on components, props and state.
 
 
 ## Table of Contents
@@ -26,7 +28,6 @@
 
 ### Web live: Coming soon
 Check out the live [demo](https://ozana-buljan.github.io/lakescapes-app/)!
-
 
 ## App features
 * Google Map displays chosen venues in Bregenz, Austria (selection is my favorites)
@@ -105,7 +106,7 @@ My first instinct when starting to tackle with a new project is to go straight t
 
 Then, I try to add some decent(ish) looks to it.
 
-![Lakescapes Mockups]()
+![Lakescapes Mockups](.\public\Mockups.png)
 
 Since this was a React task, I needed to split that UI into small pieces - legos for my app - and sketch how they interact with each other. I must say oI had to tweak it a few times from the beginning of process to the final app. This is where my lack of experience with some technologies required for this project had really shined through. Let me explain what I mean by that with a quick sketch comparing my initial idea for the app architecture - as opposed to its final version:
 

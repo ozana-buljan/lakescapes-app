@@ -202,7 +202,7 @@ export class Aside extends Component {
                     </a>
           ))}
         </div>
-<p className="foursquare-logo"> Powered by <img src={foursquareIMG} className="img-responsive" alt="foursquare"/></p>
+<a href="https://foursquare.com/" aria-label="go to foursquare" className="foursquare-logo"> Powered by <img src={foursquareIMG} className="img-responsive" alt="foursquare"/></a>
         </SideNav>
     );
   }
