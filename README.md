@@ -1,6 +1,6 @@
 # Udacity FEND Project #8:  **LakEscapes** - Neighbourhood Map App
 
- This project's purpose is to build a single page web application from scratch using ReactJS and to add features provided by external APIs (like Maps Javascript API and FourSquare Places APi), focusing on components, props and state.
+ This is eighth and final project for Udacity's FEND. Project's purpose is to build a single page web application (from scratch!) using ReactJS and to add features provided by external APIs (like Maps Javascript API and FourSquare Places APi), focusing on components, props and state.
 
 
 
@@ -29,7 +29,15 @@
 
 
 ## App features
-
+* Google Map displays chosen venues in Bregenz, Austria (selection is my favorites)
+* When user clicks ona a marker, it gets animated (bounces) and an info window opens which provides further details about the venue (fetched from Foursquare's API).
+* **Note**: *Since there is a daily limit of API requests this app can make to Foursquare, it may so occur that it's unable to retreive the details if the limit is exceeded (Error 429). That's the downside of being on a free plan* ¯\_(ツ)_/¯
+* User can toggle a sidebar (the toggle button is upper left on header) which allow them to filter markers and venues on the list by category or by name.
+* At sidebar  - there is an intro note, filter options and a Search Results List.
+    - QUICK FILTER -> consists of buttons which filter venues by category (culture, food, fun, shopping, beaches, nature)
+    - SEARCH BAR -> allows user to filter by name - matches text in the inout field against venues name. Uses RegExp with "gi" parameter - which means it's going to match a location even if a fraction of the query word corresponds the name. It's also case insensitive.
+    - SEARCH RESULTS LIST -> it is updated by both quick filter and search bar and lists only matching venues. A little tweak that I've implemented, which enhances mobile UX is that on click on any of the list items, it closes the sidebar, makes that marker active and opens an info window.
+*At footer-> credits and copyright (as seen from elsewhere :)
 
 ### The looks
 #### Result
@@ -153,6 +161,9 @@ Check out the live [demo]()!
 - [Foursquare Place API](https://developer.foursquare.com/). Over 125,000 developers building location-aware experiences with Foursquare technology and data.
 
 ## ToDo
+This is pretty much a done thing, but maybe there are few things to improve it:
+* More sensible selection of venues displayed (not only my favorites - but something someone would *actually use*)
+* Dynamically change icons to correspond venue's category
 
 
 ## Contributing
