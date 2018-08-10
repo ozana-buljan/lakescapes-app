@@ -5,15 +5,10 @@
 
  As per technicalities, the task was to build a single page web application (from scratch!) using ReactJS and to add features provided by external APIs (like Maps Javascript API and FourSquare Places APi), focusing on components, props and state.
 
-
-## Table of Contents
-
-* [Running instructions](#)
-* [App Details](#)
-
-
-
 ## Running instructions
+
+### Web live: Coming soon
+Check out the live [demo](https://ozana-buljan.github.io/lakescapes-app/)!
 
 ### Run locally
 *   Download the repository: click download ZIP on the right of the screen and extract the zip file to your computer or clone the repository using Git.
@@ -26,8 +21,6 @@
 
 * Check out the app!
 
-### Web live: Coming soon
-Check out the live [demo](https://ozana-buljan.github.io/lakescapes-app/)!
 
 ## App features
 * Google Map displays chosen venues in Bregenz, Austria (selection is my favorites)
@@ -102,11 +95,11 @@ The first thing I've learned on my path as  a web dev is to split a complex prob
 
 My first instinct when starting to tackle with a new project is to go straight to the drawing board. List all the requirements for the project and sketch how their functionality is inteveined.
 
-![Lakescapes WFs]()
+![Lakescapes WFs](https://github.com/ozana-buljan/lakescapes-app/blob/master/public/WFs.png)
 
 Then, I try to add some decent(ish) looks to it.
 
-![Lakescapes Mockups](.\public\Mockups.png)
+![Lakescapes Mockups](https://github.com/ozana-buljan/lakescapes-app/blob/master/public/Mockups.png)
 
 Since this was a React task, I needed to split that UI into small pieces - legos for my app - and sketch how they interact with each other. I must say oI had to tweak it a few times from the beginning of process to the final app. This is where my lack of experience with some technologies required for this project had really shined through. Let me explain what I mean by that with a quick sketch comparing my initial idea for the app architecture - as opposed to its final version:
 
