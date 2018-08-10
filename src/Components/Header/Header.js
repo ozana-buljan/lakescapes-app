@@ -8,16 +8,16 @@ import ToggleAsideBtn from './ToggleAsideBtn';
 import LeLogo from "../../Images/le-logo.png";
 
 /* *** *** *** COMPONENT*** *** *** */
-class Header extends Component{
-render() {
+const Header = () => {
       return (
-          <Navbar left fixed  role="navigation" aria-label="main menu" >
+          <Navbar left fixed role="navigation" aria-label="main menu" >
               <ToggleAsideBtn  autofocus  aria-label="open side navigation" className="hide-on-med-and-down"/>
-              <img  id="le-logo" src={LeLogo} alt="Lakescapes app logo" className="logo responsive-img"/>
+              <img
+               id="le-logo" src={LeLogo} alt="Lakescapes app logo" className="logo responsive-img"/>
               </Navbar>
     );
   }
-}
+
 
 /* *** *** EXPORT*** *** */
 export default Header;

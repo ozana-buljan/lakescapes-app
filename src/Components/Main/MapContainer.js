@@ -2,6 +2,7 @@
 /* React,  ReactDOM */
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+/*prop-types npm*/
 /* axios npm -> HTTP Client */
 //src: https://www.npmjs.com/package/axios
 import axios from "axios";
@@ -57,6 +58,7 @@ class MapContainer extends Component {
             }
         };
     }
+
  /*
   *@description componentDidMount()-> after component mounts, load the map
   */
@@ -321,6 +323,7 @@ updateMarkers = markers => {
 
  /*
    * @description filterMarker()-> on click on one of tfilter buttons; filters them acordingly
+   *I wanted to use ternary operator here too - but due to too many conditions; it turned out to be one hot mess sausage. So I went with if /else instead
    */
 
 filterMarkers =(id)=> {
@@ -375,7 +378,7 @@ filterMarkers =(id)=> {
         />
     <Map id="map-div" role="application" ref="map"
        google={this.props.google}
-        locations={this.props.locations}>
+        locations={this.state.locations}>
 
       </Map>
 

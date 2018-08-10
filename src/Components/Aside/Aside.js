@@ -1,18 +1,29 @@
 /* *** *** *** IMPORTS *** *** *** */
 /* React */
 import React, { Component } from "react";
-
+/*prop-types npm*/
+import PropTypes from 'prop-types';
 /*React-Materialize CSS npm*/
 //src: https://react-materialize.github.io/
 import {Button, Icon, SideNav,  Row, Col, Input } from 'react-materialize';
+/*Local components and assets*/
 import atFlag from "../../Images/flag.png"
 import foursquareIMG from "../../Images/foursquare2.png";
 
 /* *** *** *** COMPONENT*** *** *** */
 export class Aside extends Component {
+    static propTypes = {
+        filterMarkers: PropTypes.func.isRequierd,
+        openInfoWindow:  PropTypes.func.isRequierd,
+        closeInfoWindow: PropTypes.func.isRequierd,
+        hideMarkers: PropTypes.func.isRequierd,
+        filterMarkers: PropTypes.func.isRequierd,
+        markers: PropTypes.array.isRequired
+    }
+
   constructor(props){
     super(props);
-      this.state = {
+    this.state = {
         search: '',
         isHidden: false,
   };
@@ -62,9 +73,7 @@ export class Aside extends Component {
     this.props.filterMarkers('show-button');
   };
 
-//TODO-> update the list on click of the button too (now only input search updates it)
-
-  render() {
+ render() {
     const { openInfoWindow, markers } = this.props;
     const { search, isHidden } = this.state;
 
@@ -85,7 +94,6 @@ export class Aside extends Component {
              id="filter-culture"
              tooltip="Culture"
              className="option"
-
               aria-label="Find places of culture and sights"
 
                onClick={() => { this.props.filterMarkers('filter-culture')}}
@@ -132,7 +140,7 @@ export class Aside extends Component {
 
                          onClick={() => { this.props.filterMarkers('filter-beach')}}
                  >
-                      <Icon>beach_access</Icon>
+                     <Icon>beach_access</Icon>
                              </Button></Col>
                               <Col s={4}>
                <Button id="filter-nature"
@@ -186,14 +194,14 @@ export class Aside extends Component {
 <h4  >Locations</h4>
         <div role="list" aria-label="List of filtered locations" id="search-results">
          {locations.map((marker, index) => (
-            <button className="btn-flat"
+            <a className="btn-flat sidenav-trigger"
               role="button"
               key={index}
               onClick={() => openInfoWindow(marker)}
             onChange={this.searchLocations}
-            >
+            href="#" data-target="slide-out">
               {marker.title}
-                </button>
+                    </a>
           ))}
         </div>
 <p className="foursquare-logo"> Powered by <img src={foursquareIMG} className="img-responsive" alt="foursquare"/></p>
@@ -201,3 +209,5 @@ export class Aside extends Component {
     );
   }
 }
+
+
