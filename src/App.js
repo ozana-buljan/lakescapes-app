@@ -15,7 +15,7 @@ import './Styles/App.css';
 const App = ()=> {
 
     return(
-        <div id="app" aria-label="Lake escape application for discoevring points of interest in Bregenz, Austria">
+        <div id="app" aria-label="Lake escape application for discoevring points of interest in Bregenz, Austria" tabIndex="0">
         <Header role="navigation" />
         <Main role="main"/>
          <LeFooter />
