@@ -13,12 +13,11 @@ import foursquareIMG from "../../Images/foursquare2.png";
 /* *** *** *** COMPONENT*** *** *** */
 export class Aside extends Component {
     static propTypes = {
-        filterMarkers: PropTypes.func.isRequierd,
-        openInfoWindow:  PropTypes.func.isRequierd,
-        closeInfoWindow: PropTypes.func.isRequierd,
-        hideMarkers: PropTypes.func.isRequierd,
-        filterMarkers: PropTypes.func.isRequierd,
-        markers: PropTypes.array.isRequired
+        filterMarkers: PropTypes.func,
+        openInfoWindow:  PropTypes.func,
+        closeInfoWindow: PropTypes.func,
+        hideMarkers: PropTypes.func,
+        markers: PropTypes.array
     }
 
   constructor(props){

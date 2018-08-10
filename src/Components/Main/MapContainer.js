@@ -8,7 +8,7 @@ import ReactDOM from "react-dom";
 import axios from "axios";
 /*google-maps-react npm*/
 //Documentation & src: https://www.npmjs.com/package/google-maps-react
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import {Map} from 'google-maps-react';
 
 /*Local Components*/
 import { Aside } from "../Aside/Aside.js";
@@ -36,15 +36,15 @@ class MapContainer extends Component {
         this.state = {
             selectedArray: 'allPlaces',
             locations: allPlaces,
-            defaultMapZoom: 14,
-            center: {
+            initialZoom: 14,
+            initialCenter: {
                 lat: 47.50075,
                 lng: 9.74231
             },
-            iconSize: 50,
             mapTypeControl: false,
             markers: [],
             infoWindow: "",
+            //marker detail fields are created according to Foursquare API response info
             markerDetails: {
                 name: null,
                 address: null,
@@ -66,15 +66,15 @@ class MapContainer extends Component {
     this.initMap();
   }
  /* *** *** *** MAP *** *** *** */
-   /*
+//To create a map I followed this awesome blog post, which is part of official documentation: https://www.fullstackreact.com/articles/how-to-write-a-google-maps-react-component/
+
+    /*
   *@description initMap()-> initializes GoogleMap
   */
   initMap = () => {
     if (this.props && this.props.google) {
       const { google } = this.props;
       const maps = google.maps;
-
-      const { defaultMapZoom, center, mapType } = this.state;
 
 /*defining arguments for new map*/
     // Getting the location to put new map in -> Looking for element with reference = 'map' prop and when found, naming it mapNode
@@ -85,9 +85,9 @@ class MapContainer extends Component {
       const mapSettings = Object.assign(
         {},
         {
-          center: center,
-          zoom: defaultMapZoom,
-          mapTypeId: mapType,
+          center: this.state.initialCenter,
+          zoom: this.state.initialZoom,
+          mapTypeId: this.state.mapType,
           styles: mapStyles
         }
       );
@@ -98,7 +98,7 @@ class MapContainer extends Component {
       this.addMarkers();
 
     //Creatig infoWindow and setting state for it
-      const infoWindow = new google.maps.InfoWindow({ maxWidth: 300 });
+      const infoWindow = new google.maps.InfoWindow({ maxWidth: 250 });
       this.setState({ infoWindow: infoWindow });
     }
   };
@@ -115,8 +115,7 @@ class MapContainer extends Component {
       //TODO-> set different icon for each category
     const defaultIcon = {
       url: leIcon,
-      size: new google.maps.Size(iconSize, iconSize),
-      scaledSize: new google.maps.Size(iconSize, iconSize)
+      scaledSize: new google.maps.Size(50, 50)
     };
 
     //Creating marker for each location
@@ -135,7 +134,7 @@ class MapContainer extends Component {
       markers.push(marker);
      //Event listener-> on click; open InfoWindow
       marker.addListener("click", () => {
-          marker.setAnimation(window.google.maps.Animation.BOUNCE);
+ marker.setAnimation(window.google.maps.Animation.BOUNCE);
         setTimeout(function () {
           marker.setAnimation(null);
         }, 600);
@@ -210,20 +209,22 @@ class MapContainer extends Component {
         // Set variables and update the state
         const { venue } = res.data.response;
 
-        const name = venue.name;
-        const address = venue.location.formattedAddress.join(", ");
-        const url = venue.url;
-        const img = `${venue.bestPhoto.prefix}150x150${venue.bestPhoto.suffix}`;
-        const phone = {
+        let name = venue.name;
+        let address = venue.location.formattedAddress.join(", ");
+        let category= venue.categories.shortName;
+        let url = venue.url;
+        let img = `${venue.bestPhoto.prefix}150x150${venue.bestPhoto.suffix}`;
+        let phone = {
           formattedPhone: venue.contact.formattedPhone,
           phone: venue.contact.phone
         };
-        const rating = venue.rating;
+        let rating = venue.rating;
 
         this.setState({
           markerDetails: {
             name,
             address,
+            category,
             url,
             img,
             phone,
@@ -236,6 +237,7 @@ class MapContainer extends Component {
         let {
           name,
           address,
+          category,
           url,
           img,
           phone,
@@ -246,6 +248,9 @@ class MapContainer extends Component {
           phone.phone !== undefined
             ? `<a href="tel:${phone.phone}">${phone.formattedPhone}</a>`
             : "";
+
+        let categoryInfo = {category} !== undefined ? `<span>${category}</span>` : "";
+
         let urlInfo =
           url !== undefined ? `<a href=${url} target="_blank">${url}</a>` : "";
         let ratingInfo =
@@ -263,6 +268,7 @@ class MapContainer extends Component {
     <div style="width: 100%; text-align: center">${imgInfo}</div>
 <hr>
            <ul class="infoWContent">
+<li>${categoryInfo}</li>
             <li style="font-weight: 500">${address}</li>
             <li>${phoneInfo}</li>
             <li>${urlInfo}</li>
@@ -331,15 +337,15 @@ filterMarkers =(id)=> {
         this.setState({locations: allPlaces});
        }else if(id === 'filter-culture'){
         this.setState({locations: culturePlaces});
-    }else if (id == 'filter-food'){
+    }else if (id === 'filter-food'){
         this.setState({locations: foodPlaces});
-    }else if (id == 'filter-fun'){
+    }else if (id === 'filter-fun'){
         this.setState({locations: funPlaces});
-    }else if (id == 'filter-shopping'){
+    }else if (id === 'filter-shopping'){
         this.setState({locations: shoppingPlaces});
-    }else if (id == 'filter-beach'){
+    }else if (id === 'filter-beach'){
         this.setState({locations: beachPlaces});
-    }else if(id == 'filter-nature'){
+    }else if(id === 'filter-nature'){
         this.setState({locations: naturePlaces});
     }
 
@@ -360,14 +366,13 @@ filterMarkers =(id)=> {
     }
 
   render() {
-    const { markers, locations, selectedArray } = this.state;
+    const { markers, locations } = this.state;
 
     return (
       <div id="wrapper">
         <Aside
         locations={locations}
           markers={markers}
-          selectedArray = {this.selectedArray}
           showMarkers={this.showMarkers}
           hideMarkers={this.hideMarkers}
           filterMarkers={this.filterMarkers}

@@ -1,6 +1,6 @@
 /* *** *** *** IMPORTS *** *** *** */
 /* React */
-import React, { Component } from "react";
+import React from "react";
 /*React-Materialize CSS npm*/
 import { Navbar } from 'react-materialize';
 /*Local Components & Assets*/

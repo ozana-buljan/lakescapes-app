@@ -82,15 +82,6 @@ export const naturePlaces = [
 
 export const foodPlaces = [
     {
-        name: "Gösser",
-        location: {
-            lat: 47.503250571826825,
-            lng: 9.747320629485518
-        },
-        category: "food",
-        icon: "./img/food-icon.png"
-  },
-    {
         name: "Trattoria IL Monello",
         location: {
             lat: 47.503229,
@@ -135,15 +126,7 @@ export const foodPlaces = [
         category: "food",
         icon: "./img/food-icon.png"
   },
-    {
-        name: "Chen's Asia Food",
-        location: {
-            lat: 47.50614470331299,
-            lng: 9.749015925163024
-        },
-        category: "food",
-        icon: "./img/food-icon.png"
-  },
+
         {
         name: "Manga",
         location: {
@@ -154,15 +137,6 @@ export const foodPlaces = [
         icon: "./img/food-icon.png"
   },
 
-    {
-        name: "Kornmesser",
-        location: {
-            lat: 47.50497981393844,
-            lng: 9.747860600980143
-        },
-        category: "food",
-        icon: "./img/food-icon.png"
-  },
     {
         name: "Eispavillon am See",
         location: {
@@ -186,15 +160,6 @@ export const foodPlaces = [
         location: {
           lat: 47.50405,
             lng: 9.74762
-        },
-        category: "food",
-        icon: "./img/food-icon.png"
-  },
-    {
-        name:  "Melanie",
-        location: {
-          lat: 47.512938519383965,
-            lng: 9.753912082610402
         },
         category: "food",
         icon: "./img/food-icon.png"
