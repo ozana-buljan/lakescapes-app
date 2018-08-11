@@ -141,7 +141,7 @@ Check out the live [demo](https://ozana-buljan.github.io/lakescapes-app/)!
 - [Foursquare Place API](https://developer.foursquare.com/). Over 125,000 developers building location-aware experiences with Foursquare technology and data.
 
 ### Map Styles
-- [Snazzymaps](//src: https://snazzymaps.com/style/7/icy-blue)
+- [Snazzymaps](https://snazzymaps.com/style/7/icy-blue)
 
 ## ToDo
 This is pretty much a done thing, but maybe there are few things to improve it:
