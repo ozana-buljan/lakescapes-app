@@ -1,9 +1,9 @@
 # Udacity FEND Project #8:  **LakEscapes** - Neighbourhood Map App
 
- This is the eighth and final project for Udacity's FEND.
- A single page app which lists the all the must-visit places in Bregenz, Austria! Coincidentally, they're also my personal favorites. So if you find yourself in Bregenz, use this map to make sure not miss out on anything this amazing vacation spot has to offer.
+This is the eighth and final project for Udacity's FEND.
+A single page app which lists all the must-visit places in Bregenz, Austria! Coincidentally, they're also my personal favorites. So if you find yourself in Bregenz, use this map to make sure not miss out on anything this amazing vacation spot has to offer.
 
- As per technicalities, the task was to build a single page web application (from scratch!) using ReactJS and to add features provided by external APIs (like Maps Javascript API and FourSquare Places API), focusing on components, props, and state.
+As per technicalities, the task was to build a single page web application (from scratch!) using ReactJS and to add features provided by external APIs (like Maps Javascript API and FourSquare Places API).
 
 ## Running instructions
 
@@ -71,10 +71,7 @@ LAKESCAPES
     └── index.js #This file is used for DOM rendering only.
 ```
 
-
-
-
-## Making of
+## Making of the app
 ### The task
 The full list of the requirements for this project is at [Udacity's Project Rubric Link](https://review.udacity.com/#!/rubrics/1351/view).
 
@@ -123,11 +120,8 @@ When I made my app work it was time to make it accessible and responsive. I used
 #### Offline experience
 The other important part of this task was to add a service worker to begin the process of creating a seamless offline experience for the users. Since I used [`create-react-app`](https://github.com/facebook/create-react-app), it already had a pre-built service worker.
 
-Check it out: in Dev Tools,  disconnect the internet or set the throttling to a low Internet speed to check out the offline experience of the app!
-
 #### Making Demo Live
 Now, GitHub pages are pretty straightforward normally. However, with React app it's a bit more complicated. I used [`gh-pages`](https://github.com/gitname/react-gh-pages) and luckily, I've found [this](https://codeburst.io/deploy-react-to-github-pages-to-create-an-amazing-website-42d8b09cd4d) tutorial which helped me to make it happen.
-
 
 Check out the live [demo](https://ozana-buljan.github.io/lakescapes-app/)!
 
@@ -137,7 +131,7 @@ Check out the live [demo](https://ozana-buljan.github.io/lakescapes-app/)!
 ### React Packages
 - [`create-react-app`](https://github.com/facebook/create-react-app). A pre-configured pack to build React apps
 - [`google-maps-react`](https://www.npmjs.com/package/google-maps-react). A declarative Google Map React component using React, lazy-loading dependencies, current-location finder and a test-driven approach by the Fullstack React team.
-- [`Prop Types`](https://www.npmjs.com/package/prop-types). Runtime type checking for React props and similar objects.
+- [`prop-types`](https://www.npmjs.com/package/prop-types). Runtime type checking for React props and similar objects.
 - [`axios`](https://www.npmjs.com/package/axios). Promise based HTTP client for the browser and node.js
 - [`react-materialize`](https://www.npmjs.com/package/react-materialize). Material design components for React, powered by [materializecss](https://materializecss.com/).
 
@@ -146,9 +140,12 @@ Check out the live [demo](https://ozana-buljan.github.io/lakescapes-app/)!
 - [Google Maps API](https://cloud.google.com/maps-platform/). Probably the most popular map on the web!
 - [Foursquare Place API](https://developer.foursquare.com/). Over 125,000 developers building location-aware experiences with Foursquare technology and data.
 
+### Map Styles
+- [Snazzymaps](//src: https://snazzymaps.com/style/7/icy-blue)
+
 ## ToDo
 This is pretty much a done thing, but maybe there are few things to improve it:
-* More sensible selection of venues displayed (not only my favorites - but something someone would *actually use*)
+* More sensible selection of venues displayed (not only my favorites - but something someone would *actually find useful*)
 * Dynamically change icons to correspond venue's category
 
 
