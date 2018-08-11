@@ -47,6 +47,7 @@ class MapContainer extends Component {
             //marker detail fields are created according to Foursquare API response info
             markerDetails: {
                 name: null,
+                category: null,
                 address: null,
                 url: null,
                 img: null,
